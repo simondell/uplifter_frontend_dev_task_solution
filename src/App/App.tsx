@@ -1,3 +1,4 @@
+import jsonp from 'jsonp'
 import React, {
   useEffect,
   useState,
@@ -5,6 +6,15 @@ import React, {
 import './App.css'
 import FeedItemCard from '../FeedItemCard/FeedItemCard'
 import mockFeed from './__mocks__/example_feed.json'
+
+export type Feed = null | {
+  title: string
+  link: string
+  description: string
+  modified: string,
+  generator: string,
+  items: FeedItem[]
+}
 
 export type FeedItem = {
   title: string
@@ -19,11 +29,21 @@ export type FeedItem = {
 }
 
 function App() {
-  const [feedItems, setFeedItems] = useState([] as FeedItem[])
+  const [feed, setFeed] = useState(null as Feed)
+  // const [photos, setPhotos] = useState([] as FeedItem[])
 
   useEffect(() => {
-    setFeedItems(mockFeed.items)
-  }, [setFeedItems])
+    const path = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json'
+    jsonp(
+      path,
+      { param: 'jsoncallback' },
+      captureFeed
+    )
+  })
+
+  function captureFeed(feedData: any) {
+    setFeed(mockFeed)
+  }
 
   return (
     <>
@@ -35,8 +55,8 @@ function App() {
       <section
         role={"main"}
       >
-        {
-          feedItems.map(feedItem =>
+        {feed &&
+          feed.items.map(feedItem =>
             <FeedItemCard
               key={`${feedItem.link}`}
               feedItem={feedItem}

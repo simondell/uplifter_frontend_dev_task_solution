@@ -21,6 +21,11 @@ test('renders a main', () => {
   expect(mainElement).toBeInTheDocument()
 });
 
-test('when initially renders, should call on jsonp', () => {
+test('when initially renders, should call on jsonp, passing the path', () => {
+  render(<App />)
 
+  expect(jsonp).toHaveBeenCalled()
+
+  const path = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json'
+  expect((jsonp as jest.Mock).mock.calls[0][0]).toEqual(path)
 })
