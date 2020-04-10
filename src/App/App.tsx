@@ -26,8 +26,10 @@ function App() {
   }, [setFeedItems])
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+      <header
+        role="banner"
+      >
         <h1>Uplifter Test Solution</h1>
       </header>
       <section
@@ -42,7 +44,7 @@ function App() {
           )
         }
       </section>
-    </div>
+    </>
   );
 }
 
