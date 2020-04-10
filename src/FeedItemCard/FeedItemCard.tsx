@@ -1,5 +1,6 @@
 import React from 'react'
 import { FeedItem } from '../App/App'
+import './FeedItemCard.css'
 
 interface FeedItemCardProps {
   feedItem: FeedItem
@@ -14,22 +15,32 @@ export function getAuthorName (rawAuthor: string): string | null {
 }
 
 export default function FeedItemCard (props: FeedItemCardProps) {
+  const { feedItem } = props
+
   return (
     <article
       itemScope
       itemType="https://schema.org/ImageObject"
     >
+      <img
+        alt=""
+        src={feedItem.media.m}
+        title={feedItem.title}
+      />
       <header>
         <h2>
           <a
-            href={props.feedItem.link}
+            href={feedItem.link}
           >
-            {props.feedItem.title}
+            {feedItem.title}
           </a> by <span>
-            {getAuthorName(props.feedItem.author)}
+            {getAuthorName(feedItem.author)}
           </span>
         </h2>
       </header>
+      {/*<div
+        dangerouslySetInnerHTML={{__html: feedItem.description}}
+      />*/}
     </article>
   )
 }

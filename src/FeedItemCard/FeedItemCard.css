@@ -1,0 +1,16 @@
+[itemType$="ImageObject"] {
+  border: 1px solid var(--color-outlines);
+  border-radius: var(--spacing-element);
+  box-shadow: var(--shadow-down);
+  overflow: hidden;
+}
+
+[itemType$="ImageObject"] header {
+  /*display: flex;*/
+  /*height: 240px;*/
+}
+
+[itemType$="ImageObject"] h2 {
+  font-size: 1rem;
+  font-weight: 200;
+}

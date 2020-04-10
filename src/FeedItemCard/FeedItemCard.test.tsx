@@ -2,7 +2,19 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import FeedItemCard, { getAuthorName } from './FeedItemCard';
 import mockFeed from '../App/__mocks__/example_feed.json'
+import { FeedItem } from '../App/App'
 
+test('renders an image', () => {
+  const mockItem = mockFeed.items[0]
+
+  const component = render(
+    <FeedItemCard
+      feedItem={mockItem}
+    />
+  );
+
+  expect(component.getByTitle(mockItem.title)).toBeInTheDocument()
+})
 
 test('renders the photo title', () => {
   const mockItem = mockFeed.items[0]
