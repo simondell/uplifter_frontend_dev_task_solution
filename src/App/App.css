@@ -1,0 +1,28 @@
+/* autoprefixer grid: autoplace */
+
+/* original iphone width */
+section[role="main"] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  row-gap: var(--spacing-element);
+}
+
+/* anothing wider than original iphone width */
+@media screen and (min-width: 321px) {
+  section[role="main"] {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--spacing-element);
+    row-gap: var(--spacing-block);
+  }
+}
+
+/* iphone >=6 landscape */
+@media screen and (min-width: 736px) {
+  section[role="main"] {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: var(--spacing-block);
+  }
+}
