@@ -3,6 +3,7 @@ import React, {
   useState,
 } from 'react';
 import mockFeed from './__mocks__/example_feed.json'
+import './App.css'
 
 export interface FeedItem {
   title: string
@@ -21,24 +22,26 @@ function App() {
 
   useEffect(() => {
     setFeedItems(mockFeed.items)
-  })
+  }, [setFeedItems])
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Uplifter Test Solution</h1>
       </header>
-      <main>
-      {
-        feedItems.map(feedItem =>
-          <div
-            key={`${feedItem.link}`}
-          >
-            {feedItem.media.m}
-          </div>
-        )
-      }
-      </main>
+      <section
+        role={"main"}
+      >
+        {
+          feedItems.map(feedItem =>
+            <div
+              key={`${feedItem.link}`}
+            >
+              {feedItem.media.m}
+            </div>
+          )
+        }
+      </section>
     </div>
   );
 }

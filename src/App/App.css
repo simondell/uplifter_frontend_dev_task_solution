@@ -1,0 +1,20 @@
+section[role="main"] {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--spacing-element);
+}
+
+@media screen and (min-width: 480px) {
+  section[role="main"] {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--spacing-element);
+    row-gap: var(--spacing-block);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  section[role="main"] {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: var(--spacing-block);
+  }
+}

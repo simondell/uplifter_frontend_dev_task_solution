@@ -11,9 +11,9 @@ test('renders a header', () => {
 });
 
 test('renders a main', () => {
-  const { getByText } = render(<App />);
+  const { getByRole } = render(<App />);
 
-  const mainElement = getByText(/Hello, world/i);
+  const mainElement = getByRole(/main/i);
 
   expect(mainElement).toBeInTheDocument();
 });
