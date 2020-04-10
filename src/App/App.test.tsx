@@ -1,19 +1,26 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from 'react'
+import { render } from '@testing-library/react'
+import App from './App'
+import jsonp from 'jsonp'
+
+jest.mock('jsonp')
 
 test('renders a header', () => {
-  const { getByText } = render(<App />);
+  const { getByText } = render(<App />)
 
-  const headingElement = getByText(/Uplifter Test Solution/i);
+  const headingElement = getByText(/Uplifter Test Solution/i)
 
-  expect(headingElement).toBeInTheDocument();
+  expect(headingElement).toBeInTheDocument()
 });
 
 test('renders a main', () => {
-  const { getByRole } = render(<App />);
+  const { getByRole } = render(<App />)
 
-  const mainElement = getByRole(/main/i);
+  const mainElement = getByRole(/main/i)
 
-  expect(mainElement).toBeInTheDocument();
+  expect(mainElement).toBeInTheDocument()
 });
+
+test('when initially renders, should call on jsonp', () => {
+
+})
