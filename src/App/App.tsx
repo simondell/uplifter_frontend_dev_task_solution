@@ -2,10 +2,11 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import mockFeed from './__mocks__/example_feed.json'
 import './App.css'
+import FeedItemCard from '../FeedItemCard/FeedItemCard'
+import mockFeed from './__mocks__/example_feed.json'
 
-export interface FeedItem {
+export type FeedItem = {
   title: string
   link: string
   media: { m: string } 
@@ -34,11 +35,10 @@ function App() {
       >
         {
           feedItems.map(feedItem =>
-            <div
+            <FeedItemCard
               key={`${feedItem.link}`}
-            >
-              {feedItem.media.m}
-            </div>
+              feedItem={feedItem}
+            />
           )
         }
       </section>
