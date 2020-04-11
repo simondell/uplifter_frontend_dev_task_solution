@@ -10,13 +10,17 @@ jest.mock('axios')
 test.only('should call on axios with path to an image', () => {
   const mockItem = mockFeed.items[0]
 
+  axios.mockResolvedValueOnce({
+    data: { some: ['values'] }
+  })
+
   const component = render(
     <FeedItemCard
       feedItem={mockItem}
     />
   );
 
-  expect(axios).toHaveBeenCalled()
+  expect(axios).toHaveBeenCalled(1)
 
   // const path = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json'
   // expect((jsonp as jest.Mock).mock.calls[0][0]).toEqual(path)

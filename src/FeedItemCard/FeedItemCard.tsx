@@ -29,7 +29,7 @@ export default function FeedItemCard (props: FeedItemCardProps) {
       const key = process.env.REACT_APP_FLICKR_KEY
       const path = `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${key}&photo_id=${photoId}&format=json&nojsoncallback=1`
       try {
-        const response = await axios(path)
+        const response = await axios.get(path)
         capturePhoto(response.data)
       }
       catch(err) {
